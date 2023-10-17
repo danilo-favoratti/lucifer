@@ -5,13 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -60,7 +58,7 @@ fun QuestionSection(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
+            .defaultMinSize(minHeight = 150.dp)
     ) {
         TextField(
             value = luciferViewModel.questionState.value,
@@ -76,7 +74,7 @@ fun QuestionSection(
 fun AnswerSection(
     luciferViewModel: LuciferViewModel
 ) {
-    luciferViewModel.answersState.forEach {
+    luciferViewModel.hiddenAnswersState.forEach {
         Card {
             Text(text = it.first, color = Color.Black)
         }
